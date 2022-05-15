@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气事件</title>
+    <script type="text/javascript" src="../../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false
+    </script>
+</head>
+<body>
+    <!--准备一个容器-->
+    <!---vue.js devtools对于纯中文数据兼容性极差-->
+    <div id="root1">
+        <h1>今天天气很{{info}}</h1>
+        <button @click="changeWeather">切换天气</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.devtools = true
+    new Vue({
+        el:'#root1',
+        data:{
+            isHot:true
+        },
+        computed:{
+            info(){
+                return this.isHot ? 'hot' : 'cool'
+            }
+        },
+        methods: {
+            changeWeather(){
+                this.isHot = !this.isHot
+            }
+        },
+    })
+</script>
+</html>
