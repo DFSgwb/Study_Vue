@@ -6,13 +6,13 @@
     <script>
         Vue.config.productionTip = false
     </script>
-        <title>姓名案例_插值语法实现</title>
+        <title>姓名案例_methods实现</title>
 </head>
 <body>
     <div id="root">
         姓：<input type="text" v-model="firstname"><br><br>
         姓：<input type="text" v-model="secondname"><br><br>
-        姓名：<span>{{firstname.slice(0,1)}}-{{secondname.slice(0,4)}}</span>
+        姓名：<span>{{fullName()}}</span>
     </div>   
     </body>
     <script type="text/javascript">
@@ -22,7 +22,12 @@
             data:{
                 firstname:'张',
                 secondname:'三',
-            }
+            },
+            methods:{
+                fullName(){
+                return this.firstname+'-'+this.secondname
+            } 
+            },
         })
     </script>
 </html>
