@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+    <script type="text/javascript" src="../../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false
+    </script>
+
+</head>
+    <!--
+        v-for指令：
+            1.用于展示列表数据
+            2.语法：v-for="(item,index) in xxx" :key="yyy"
+            3.可遍历：数组，对象，字符串(用的比较少)，指定次数(用的更少)
+    -->
+<body>
+    <div id="root">
+        <!--遍历数组-->
+        <h2>人员列表</h2>
+        <ul>
+            <li v-for="p in persons" :key="p.id">
+                {{p.name}}   {{p.age}}
+            </li>
+        </ul>
+        <!--遍历对象-->
+        <h2>汽车信息</h2>
+        <ul>
+            <li v-for="(value,key) in car" :key="key">
+                {{key}}   {{value}}
+            </li>
+        </ul>
+        <!--遍历字符串-->
+        <h2>遍历字符串测试</h2>
+        <ul>
+            <li v-for="(value,key) in str" :key="key">
+                {{value}}   {{key}}
+            </li>
+        </ul>
+        <!--遍历指定次数-->
+        <h2>遍历指定次数</h2>
+        <ul>
+            <li v-for="(value,key) in 5" :key="key">
+                {{value}}   {{key}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#root',
+        data:{
+            persons:[
+                {id:'001',name:'张三',age:18},
+                {id:'002',name:'李四',age:19},
+                {id:'003',name:'王五',age:20},
+                {id:'004',name:'小六',age:21},
+                {id:'006',name:'污渍',age:22}
+            ],
+            car:{
+                name:'奔驰SUV',
+                price:'100W',
+                color:'橙色'
+            },
+            str:'apple'
+        }
+    })
+</script>
+</html>
