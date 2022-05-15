@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    <script type="text/javascript" src="../../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false
+    </script>
+</head>
+<!--
+    Vue中常用的按键别名：
+        回车：enter
+        删除：delete
+        退出：esc
+        空格：space
+        换行：tab
+        上：up
+        下：down
+        左：left
+        右：right
+    Vue未提供别名的按键，可以使用按键原始的key值去绑定，但要注意两个大写单词连接的按键名称要转小写加横杆连接两个单词
+    系统修饰键用法特殊：ctrl，alt，shift，meta
+        （1）配合keyup使用：按下修饰键的同时，在按下其他键，随后释放其他键，事件才被触发
+        （2）配合keydown使用：正常触发事件
+    也可以使用keyCode去指定具体的按键(不推荐)
+    Vue.config.keyCodes.自定义键名=键码,可以去定制按键别名
+-->
+<body>
+    <!--准备一个容器-->
+    <!---vue.js devtools对于纯中文数据兼容性极差-->
+    <div id="root">
+        <h1>欢迎来到{{name}}</h1>
+        <input type="text" placeholder="按下回车提升输入" @keyup.enter="showInfo">
+    </div>
+    <script type="text/javascript">
+        Vue.config.devtools = true
+        new Vue({
+            el:"#root",
+            data:{
+                name:"XTU"
+            },
+            methods:{
+                showInfo(e){
+                    //if(e.keyCode !== 13) return //实现按end才执行事件打印按键或者使用别名ender实现
+                    console.log(e.target.value)
+                }
+            }
+        })
+        </script>
+</body>
+</html>
